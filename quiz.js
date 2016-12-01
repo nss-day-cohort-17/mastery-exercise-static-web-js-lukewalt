@@ -16,3 +16,9 @@ var tree = function(obj) {
 
 
 grow.addEventListener("click", tree);
+grow.addEventListener("keypress", function(e){
+    var key = e.keyCode;
+    if (key === 13) {
+        tree();
+    }
+});

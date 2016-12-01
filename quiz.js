@@ -9,15 +9,14 @@ var tree = function(num1, num2) {
     num2 = userCharacter.value;
     if (userHeight.value === '' || userCharacter.value === '') {
         alert("Both inputs must have a value");
+    } else if (isNaN(userHeight.value)) {
+        alert("First value must be a number");
     }
-    // console.log(num1)
-    // console.log(num2)
+    console.log(num1)
+    console.log(num2)
 
 }
 
-// if (userHeight.value === '' || userCharacter.value === '') {
-//     alert("Both inputs must have a value");
-// }
 
 var growButton = document.getElementById('grow');
 

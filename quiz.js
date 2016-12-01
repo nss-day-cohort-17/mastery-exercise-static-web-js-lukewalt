@@ -1,22 +1,34 @@
+
+
+var userHeight = document.getElementById('inputHeight');
+var userCharacter = document.getElementById('inputCharacter');
+
 // Create a `tree` function that should build a pine tree out of a character in the Chrome dev tools console.
+var tree = function(num1, num2) {
+    num1 = userHeight.value;
+    num2 = userCharacter.value;
+    if (userHeight.value === '' || userCharacter.value === '') {
+        alert("Both inputs must have a value");
+    }
+    // console.log(num1)
+    // console.log(num2)
 
-var treePerameters = {
-        hight: null,
-        character: null
 }
 
-var userHeight = document.getElementById('inputHeight').innerHTML;
-var userCharacter = document.getElementById('inputCharacter').innerHTML;
-var growButton = document.getElementById('grow').innerHTML;
+// if (userHeight.value === '' || userCharacter.value === '') {
+//     alert("Both inputs must have a value");
+// }
 
-var tree = function(obj) {
-    treePerameters.height += userHeight;
-    treePerameters.character += userCharacter;
-}
+var growButton = document.getElementById('grow');
 
-
-grow.addEventListener("click", tree);
-grow.addEventListener("keypress", function(e){
+growButton.addEventListener("click", tree);
+userHeight.addEventListener("keypress", function(e){
+    var key = e.keyCode;
+    if (key === 13) {
+        tree();
+    }
+});
+userCharacter.addEventListener("keypress", function(e){
     var key = e.keyCode;
     if (key === 13) {
         tree();

@@ -1,3 +1,5 @@
+
+//capturing elements from the DOM
 var userHeight = document.getElementById('inputHeight');
 var userCharacter = document.getElementById('inputCharacter');
 var growButton = document.getElementById('grow');
@@ -5,11 +7,8 @@ var growButton = document.getElementById('grow');
 // Create a `tree` function that should build a pine tree out of a character in the Chrome dev tools console.
 var tree = function(obj) {
 
-    var hit = obj.hit;
+    var hit = obj.hit; //obj is acknowleding a varying input while .hit is defining the objects key to what is hardcoded in js
     var char = obj.char;
-
-    console.log(hit);
-    console.log(char);
 
     if (hit === '' || char === '') {
         alert("Both inputs must have a value");
@@ -54,25 +53,19 @@ growButton.addEventListener("click", function(){
 });
 
 //event listener for height input
-userHeight.addEventListener("keypress", function(e){
-    var key = e.keyCode;
-    if (key === 13) {
-        var inputObj = {
-            hit: userHeight.value,
-            char: userCharacter.value
-        };
-        tree(inputObj);
-    }
-});
-
+userHeight.addEventListener("keypress", onkeypress);
 //event listener for character input
-userCharacter.addEventListener("keypress", function(e){
-    var key = e.keyCode;
-    if (key === 13) {
+userCharacter.addEventListener("keypress", onkeypress);
+
+//created seperate keypress function so that it was not repeated on both input fields
+function onkeypress(e) {
+    // console.log(e)
+    var key = e.key;
+    if (key === 'Enter') { //use enters key value not its key code
         var inputObj = {
             hit: userHeight.value,
             char: userCharacter.value
         };
         tree(inputObj);
     }
-});
+}

@@ -1,12 +1,15 @@
-
-//captured user inputs from the DOM
 var userHeight = document.getElementById('inputHeight');
 var userCharacter = document.getElementById('inputCharacter');
+var growButton = document.getElementById('grow');
 
 // Create a `tree` function that should build a pine tree out of a character in the Chrome dev tools console.
-var tree = function(hit, char) {
-    hit = userHeight.value;
-    char = userCharacter.value;
+var tree = function(obj) {
+
+    var hit = obj.hit;
+    var char = obj.char;
+
+    console.log(hit);
+    console.log(char);
 
     if (hit === '' || char === '') {
         alert("Both inputs must have a value");
@@ -30,24 +33,46 @@ var tree = function(hit, char) {
             //takes the tree built in prior two lines and sets it equal to a new variable
             final += row;
         }
-
         //prints full tree in one console line
         console.log(final)
     }
 }
 
-var growButton = document.getElementById('grow');
+//event listener for button
+growButton.addEventListener("click", function(){
 
-growButton.addEventListener("click", tree);
+    //object is created inside of each event listener
+    //referencing the DOM elements [stored in global variables] and -->
+
+    var inputObj = {
+        hit: userHeight.value,
+        char: userCharacter.value
+    };
+    // --> passess that object to the function called in the annonymous function in the event listener
+    tree(inputObj);
+
+});
+
+//event listener for height input
 userHeight.addEventListener("keypress", function(e){
     var key = e.keyCode;
     if (key === 13) {
-        tree();
+        var inputObj = {
+            hit: userHeight.value,
+            char: userCharacter.value
+        };
+        tree(inputObj);
     }
 });
+
+//event listener for character input
 userCharacter.addEventListener("keypress", function(e){
     var key = e.keyCode;
     if (key === 13) {
-        tree();
+        var inputObj = {
+            hit: userHeight.value,
+            char: userCharacter.value
+        };
+        tree(inputObj);
     }
 });
